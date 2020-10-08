@@ -1,0 +1,7 @@
+C:\Users\Саша Комкова\Desktop\UNI\с#\oop_L3\oop_L3\bin\Debug\oop_L3.exe.config
+C:\Users\Саша Комкова\Desktop\UNI\с#\oop_L3\oop_L3\bin\Debug\oop_L3.exe
+C:\Users\Саша Комкова\Desktop\UNI\с#\oop_L3\oop_L3\bin\Debug\oop_L3.pdb
+C:\Users\Саша Комкова\Desktop\UNI\с#\oop_L3\oop_L3\obj\Debug\oop_L3.csprojAssemblyReference.cache
+C:\Users\Саша Комкова\Desktop\UNI\с#\oop_L3\oop_L3\obj\Debug\oop_L3.csproj.CoreCompileInputs.cache
+C:\Users\Саша Комкова\Desktop\UNI\с#\oop_L3\oop_L3\obj\Debug\oop_L3.exe
+C:\Users\Саша Комкова\Desktop\UNI\с#\oop_L3\oop_L3\obj\Debug\oop_L3.pdb

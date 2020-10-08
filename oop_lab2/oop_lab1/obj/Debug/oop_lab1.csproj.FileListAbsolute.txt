@@ -1,0 +1,14 @@
+C:\Users\Саша Комкова\Desktop\UNI\с#\oop_lab1\oop_lab1\bin\Debug\oop_lab1.exe.config
+C:\Users\Саша Комкова\Desktop\UNI\с#\oop_lab1\oop_lab1\bin\Debug\oop_lab1.exe
+C:\Users\Саша Комкова\Desktop\UNI\с#\oop_lab1\oop_lab1\bin\Debug\oop_lab1.pdb
+C:\Users\Саша Комкова\Desktop\UNI\с#\oop_lab1\oop_lab1\obj\Debug\oop_lab1.csprojAssemblyReference.cache
+C:\Users\Саша Комкова\Desktop\UNI\с#\oop_lab1\oop_lab1\obj\Debug\oop_lab1.csproj.CoreCompileInputs.cache
+C:\Users\Саша Комкова\Desktop\UNI\с#\oop_lab1\oop_lab1\obj\Debug\oop_lab1.exe
+C:\Users\Саша Комкова\Desktop\UNI\с#\oop_lab1\oop_lab1\obj\Debug\oop_lab1.pdb
+C:\Users\Саша Комкова\Desktop\UNI\с#\oop_lab2\oop_lab1\bin\Debug\oop_lab1.exe.config
+C:\Users\Саша Комкова\Desktop\UNI\с#\oop_lab2\oop_lab1\bin\Debug\oop_lab1.exe
+C:\Users\Саша Комкова\Desktop\UNI\с#\oop_lab2\oop_lab1\bin\Debug\oop_lab1.pdb
+C:\Users\Саша Комкова\Desktop\UNI\с#\oop_lab2\oop_lab1\obj\Debug\oop_lab1.csprojAssemblyReference.cache
+C:\Users\Саша Комкова\Desktop\UNI\с#\oop_lab2\oop_lab1\obj\Debug\oop_lab1.csproj.CoreCompileInputs.cache
+C:\Users\Саша Комкова\Desktop\UNI\с#\oop_lab2\oop_lab1\obj\Debug\oop_lab1.exe
+C:\Users\Саша Комкова\Desktop\UNI\с#\oop_lab2\oop_lab1\obj\Debug\oop_lab1.pdb
