@@ -5,3 +5,10 @@ D:\Саша Комкова\vs\oop_lab4\oop_lab4\obj\Debug\oop_lab4.csproj.CoreCo
 D:\Саша Комкова\vs\oop_lab4\oop_lab4\obj\Debug\oop_lab4.exe
 D:\Саша Комкова\vs\oop_lab4\oop_lab4\obj\Debug\oop_lab4.pdb
 D:\Саша Комкова\vs\oop_lab4\oop_lab4\obj\Debug\oop_lab4.csprojAssemblyReference.cache
+D:\Саша Комкова\oop\oop_lab4\oop_lab4\bin\Debug\oop_lab4.exe.config
+D:\Саша Комкова\oop\oop_lab4\oop_lab4\bin\Debug\oop_lab4.exe
+D:\Саша Комкова\oop\oop_lab4\oop_lab4\bin\Debug\oop_lab4.pdb
+D:\Саша Комкова\oop\oop_lab4\oop_lab4\obj\Debug\oop_lab4.csprojAssemblyReference.cache
+D:\Саша Комкова\oop\oop_lab4\oop_lab4\obj\Debug\oop_lab4.csproj.CoreCompileInputs.cache
+D:\Саша Комкова\oop\oop_lab4\oop_lab4\obj\Debug\oop_lab4.exe
+D:\Саша Комкова\oop\oop_lab4\oop_lab4\obj\Debug\oop_lab4.pdb

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using oop_lab7;
 
 namespace oop_lab5
 {
@@ -18,16 +19,12 @@ namespace oop_lab5
         }
         struct Choco
         {
-            public string color { get; set; }
-            public int gr { get; set; }
+            public string color;
+            public int gr;
 
             public void about()
             {
                 Console.WriteLine($"color of chocolate is {color} & wheight is {gr}gr");
-            }
-            public Choco(string color, int gr) {
-                this.color = color;
-                this.gr = gr;
             }
         }
 
@@ -51,7 +48,7 @@ namespace oop_lab5
 
 
         }
-        partial class Flowers : Goods
+         class Flowers : Goods
         {
 
             public Flowers(string flower_name, int gr)
@@ -61,31 +58,31 @@ namespace oop_lab5
             }
 
 
-            //public override int GetHashCode()
-            //{
-            //    Console.WriteLine($"\nHASHCODE of car {this.name} is: {name.GetHashCode()}\n-------------------\n");
-            //    return name.GetHashCode();
-            //}
+            public override int GetHashCode()
+            {
+                Console.WriteLine($"\nHASHCODE of car {this.name} is: {name.GetHashCode()}\n-------------------\n");
+                return name.GetHashCode();
+            }
 
-            //public override string ToString()
-            //{
-            //    return $"{name}\n";
-            //}
+            public override string ToString()
+            {
+                return $"{name}\n";
+            }
 
-            //public override bool Equals(object obj)
-            //{
-            //    if (obj == null)
-            //        return false;
-            //    Flowers el = obj as Flowers;
-            //    if (el as Flowers == null)
-            //        return false;
+            public override bool Equals(object obj)
+            {
+                if (obj == null)
+                    return false;
+                Flowers el = obj as Flowers;
+                if (el as Flowers == null)
+                    return false;
 
-            //    return el.name == this.name;
-            //}
+                return el.name == this.name;
+            }
 
 
         }
-        class Watches : Goods 
+        class Watches : Goods //, IInfo
         {
 
             public string color;
@@ -115,9 +112,18 @@ namespace oop_lab5
         }
         class Cake
         {
-
+            private int Cake_Gr;
             public string cake_name;
-            public int cake_gr;
+            public int cake_gr
+            { get { return Cake_Gr;}
+                set 
+                { if (value < 0 || value == 0)
+                        throw new WeightException();
+                    else {
+                        Cake_Gr = value;
+                    }
+                }
+            }
             public Cake()
             {
 
@@ -126,7 +132,7 @@ namespace oop_lab5
             }
             public Cake(string cake_name, int cake_gr)
             {
-
+                
                 this.cake_name = cake_name;
                 this.cake_gr = cake_gr;
 
@@ -264,9 +270,9 @@ namespace oop_lab5
             }
 
 
+           
 
-
-
+                
 
             static void Main()
             {
@@ -276,8 +282,8 @@ namespace oop_lab5
 
 
 
-                Cake cake1 = new Cake("banana cake", 100);
-                Cake cake2 = new Cake("strawberry cake", 200);
+                Cake cake1 = new Cake("banana cake", 1000);
+                Cake cake2 = new Cake("strawberry cake", 2000);
                 Candy candy1 = new Candy("choco candy", 600);
                 Candy candy2 = new Candy("rose candy", 370);
 
@@ -311,17 +317,19 @@ namespace oop_lab5
                 //print.IAmPrinting(flower1);
                 //print.IAmPrinting(bag1);
 
-                Choco white = new Choco("white", 180);
-                white.about();
+                //Choco white;
+                //white.color = "white";
+                //white.gr = 180;
+                //white.about();
 
-                animals a;
-                a = animals.frog;
-                Console.WriteLine(a);
-                Console.WriteLine((int)a);
+                //Gift gift = new Gift();
+                //gift.Add(flower1);
+                //Console.WriteLine(gift.ToString());
 
 
 
-
+                //ArgumentException
+                
                 Console.ReadKey();
             }
 
@@ -330,4 +338,5 @@ namespace oop_lab5
 
     }
 }
+
 

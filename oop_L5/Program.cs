@@ -40,6 +40,12 @@ namespace oop_lab5
                 return name.GetHashCode();
             }
 
+            public override void GetType()
+            {
+                Console.WriteLine("type is flowers");
+                return;
+            }
+
             public override string ToString()
             {
                 return $"{name}\n";
@@ -99,7 +105,7 @@ namespace oop_lab5
             public string candy_name;
             public Candy( string candy_name)
             {
-               // bag = any_bag;
+               
                 this.candy_name = candy_name;
             }
 
@@ -119,9 +125,6 @@ namespace oop_lab5
             {
                 cake = ck;
                 candy = cd;
-
-                //Console.WriteLine($"in the sweet bag you have ");
-
             }
             public void Info(Cake ck, Candy cd) {
                 
@@ -155,6 +158,28 @@ namespace oop_lab5
 
             Flowers flower1 = new Flowers("rose");
             flower1.info();
+
+            //Goods good = new Goods("corn");
+
+            //Flowers flower2 = good as Flowers;
+            //if (flower2 == null)
+            //{
+            //    Console.WriteLine("Преобразование прошло неудачно");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Преобразование прошло удачно");
+            //}
+            
+            //if (good is Flowers)
+            //{
+            //    Flowers flower2 = (Flowers)god;
+            //    Console.WriteLine("Преобразование допустимо");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Преобразование не допустимо");
+            //}
 
             Watches watches1 = new Watches("rolex", "silver", 2020);
             watches1.info();

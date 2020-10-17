@@ -8,13 +8,13 @@ namespace oop_lab4
 {
     public class MyList<T> : List<T>
     {
-        public class Owner 
+        public class Owner
         {
             public int id { get; set; }
             public string name { get; set; }
             public string uni { get; set; }
 
-            public Owner(int id, string name, string uni) 
+            public Owner(int id, string name, string uni)
             {
                 this.id = id;
                 this.name = name;
@@ -71,24 +71,15 @@ namespace oop_lab4
 
         public static bool operator ==(MyList<T> a, MyList<T> b)
         {
-            if (a.Equals(b) && b.Equals(a))
-            {
-                return true;
-
-            }
-            else { return false; }
+            return a.Equals(b);
+            
         }
         public static bool operator !=(MyList<T> a, MyList<T> b)
         {
-            if (a.Equals(b) && b.Equals(a))
-            {
-                return false;
-
-            }
-            else { return true; }
+            return !a.Equals(b);
         }
 
-        
+
     }
     public static class StatisticOperation
     {
@@ -105,42 +96,40 @@ namespace oop_lab4
         public static void MinMax(MyList<int> a)
         {
             a.Sort();
-            Console.WriteLine(a[a.Count-1] - a[0]);
-            return ;
+            Console.WriteLine(a[a.Count - 1] - a[0]);
+            return;
         }
 
         public static void Amount(MyList<string> a)
         {
             Console.WriteLine(a.Count);
-            return ;
+            return;
         }
-        public static void getLast(this MyList<string> a) //Выделение последнего числа, содержащегося в строке
+        public static void getLast(this string a) //Выделение последнего числа, содержащегося в строке
         {
-            
-            //Console.WriteLine(a[a.Count -1]);
-            int indx = a.Count - 1;
-            
+
+            int indx = a.Length - 1;
             Console.WriteLine(a[indx].ToString());
-            return ;
+            return;
         }
-        public static void deleteElem(this MyList<string> a, int n ) //Удаление заданного элемента из списка
+        public static void deleteElem(this MyList<string> a, int n) //Удаление заданного элемента из списка
         {
-            //Console.WriteLine(a[a.Count -1]);
-            //string indx_d = Console.ReadLine();
-            
-            a.RemoveAt(n);
-            //return a;
-            //a.Remove(elem);
-            foreach (var item in a )
+
+            if (n < a.Count)
+            {
+                a.RemoveAt(n);
+            }
+            else { Console.WriteLine("try another index"); }
+            foreach (var item in a)
                 Console.WriteLine(item);
-            return ;
+            return;
 
         }
 
     }
     class Program
     {
-        
+
 
 
         static void Main(string[] args)
@@ -148,51 +137,55 @@ namespace oop_lab4
             MyList<string> animal_1 = new MyList<string> { "1", "2" };
 
             MyList<string> animal_2 = new MyList<string> { "23234", "6", "677" };
-            MyList<string> zoo = new MyList<string> { };
 
 
-            //MyList<dynamic>.Owner own = new MyList<dynamic>.Owner(01, "alexandrakomkova", "bstu");
-            //Console.WriteLine($"{own.id} - {own.name} - {own.uni} ");
 
-            //MyList<string>.Data date = new MyList<string>.Data( "02/10/2020");
-            //Console.WriteLine($"{date.data} ");
 
-            //MyList<int> nums = new MyList<int> { 2, 456, 355 , 2};
-            //StatisticOperation.MinMax(nums);
-            //Console.WriteLine();
+            MyList<dynamic>.Owner own = new MyList<dynamic>.Owner(01, "alexandrakomkova", "bstu");
+            Console.WriteLine($"{own.id} - {own.name} - {own.uni} ");
 
-            //StatisticOperation.Amount(animal_2);
-            //Console.WriteLine();
+            MyList<string>.Data date = new MyList<string>.Data("02/10/2020");
+            Console.WriteLine($"{date.data} ");
 
-            animal_2.getLast();
+            MyList<int> nums = new MyList<int> { 2, 456, 355, 2 };
+            StatisticOperation.MinMax(nums);
             Console.WriteLine();
 
-            animal_2.deleteElem(3);
-            Console.WriteLine("---------");
-            //foreach (var item in animal_2)
-            //    Console.WriteLine(item);
-            //Console.WriteLine();
+            StatisticOperation.Amount(animal_2);
+            Console.WriteLine();
+
+            String str = "HELLO";
+            Console.WriteLine(str);
+            str.getLast();
+            Console.WriteLine();
+
+            animal_2.deleteElem(2);
+
+            foreach (var item in animal_2)
+                Console.WriteLine(item);
+            Console.WriteLine();
 
 
-            //StatisticOperation.Sum(animal_1, animal_2);
-            //Console.WriteLine();
+            StatisticOperation.Sum(animal_1, animal_2);
+            Console.WriteLine();
 
-            //foreach (var item in animal_1 + animal_2)
-            //    Console.WriteLine(item);
-            //Console.WriteLine();
+            foreach (var item in animal_1 + animal_2)
+                Console.WriteLine(item);
+            Console.WriteLine();
 
-            //foreach (var item in --animal_2)
-            //    Console.WriteLine(item);
-            //Console.WriteLine();
+            foreach (var item in --animal_2)
+                Console.WriteLine(item);
+            Console.WriteLine();
 
-            //Console.WriteLine( animal_1 == animal_2); //??
-            //Console.WriteLine(true(animal_2)); //??
+            if (animal_1 == animal_2)
+            { Console.WriteLine("they're equals"); }
+            else { Console.WriteLine("they're NOT equals"); }
 
-            //if (animal_1)
-            //{
-            //    Console.WriteLine("the list has got elements");
-            //}
-            //else { Console.WriteLine("the list hasn't got elements"); }
+            if (animal_1)
+            {
+                Console.WriteLine("the list has got elements");
+            }
+            else { Console.WriteLine("the list hasn't got elements"); }
 
 
 
