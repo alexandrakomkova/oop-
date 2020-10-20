@@ -447,7 +447,6 @@ namespace oop_lab5
                 finally
                 {
                     Console.WriteLine("Попытка деления на ноль не удалась.");
-
                 }
 
                 Console.ReadKey();
