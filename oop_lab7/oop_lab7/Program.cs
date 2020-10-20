@@ -50,7 +50,7 @@ namespace oop_lab5
         }
          class Flowers : Goods
         {
-
+            
             public Flowers(string flower_name, int gr)
             {
                 this.name = flower_name;
@@ -87,6 +87,10 @@ namespace oop_lab5
 
             public string color;
             public int model;
+            public Watches()
+            {
+                
+            }
             public Watches(string watches_label, int gr)
             {
                 this.name = watches_label;
@@ -118,7 +122,7 @@ namespace oop_lab5
             { get { return Cake_Gr;}
                 set 
                 { if (value < 0 || value == 0)
-                        throw new WeightException();
+                        throw new WeightException("Вес не может быть равен 0 или меньше 0! ");
                     else {
                         Cake_Gr = value;
                     }
@@ -149,12 +153,30 @@ namespace oop_lab5
         }
         sealed class Candy : IInfo
         {
+            private string candy_name_private;
 
-            public string candy_name;
+            public string candy_name
+            { 
+                get 
+                { 
+                    return candy_name_private; 
+                }
+                set 
+                {
+                    if (value.Length == 0)
+                    {
+                        throw new WhatException("Что-то пошло не так..Похоже вы дали пустое имя.");
+                    }
+                    else 
+                    {
+                        candy_name_private = value;
+                    }
+                }
+            }
             public int candy_gr;
             public Candy(string candy_name, int candy_gr)
             {
-                // bag = any_bag;
+                
                 this.candy_gr = candy_gr;
                 this.candy_name = candy_name;
             }
@@ -249,20 +271,22 @@ namespace oop_lab5
 
                 public static void FindMin(List<Goods> c)
                 {
-
-                    int temp;
-                    for (int i = 0; i < c.Count - 1; i++)
-                    {
-                        for (int j = i + 1; j < c.Count; j++)
+                    
+                   
+                        int temp;
+                        for (int i = 0; i < c.Count - 1; i++)
                         {
-                            if (c[i].gr > c[j].gr)
+                            for (int j = i + 1; j < c.Count; j++)
                             {
-                                temp = c[i].gr;
-                                c[i].gr = c[j].gr;
-                                c[j].gr = temp;
+                                if (c[i].gr > c[j].gr)
+                                {
+                                    temp = c[i].gr;
+                                    c[i].gr = c[j].gr;
+                                    c[j].gr = temp;
+                                }
                             }
                         }
-                    }
+                    
                     Console.WriteLine(c[0].gr);
 
                 }
@@ -301,7 +325,7 @@ namespace oop_lab5
                 gift.AddItem(flower1);
                 gift.AddItem(watches2);
 
-                gift.Print();
+               // gift.Print();
                 Controller.Amount(container);
                 Controller.FindMin(container);
 
@@ -326,10 +350,106 @@ namespace oop_lab5
                 //gift.Add(flower1);
                 //Console.WriteLine(gift.ToString());
 
+                try
+                {
+                    Cake cake55 = new Cake("lavander cake", -1000);
+
+                }
+                catch (WeightException ex)
+                {
+                    Console.WriteLine("Ошибка: " + ex.Message);
+                    Console.WriteLine("Метод: " + ex.TargetSite);
+                    Console.WriteLine("Источник: " + ex.Source);
+                    Console.WriteLine("Стек: " + ex.StackTrace);
+                    Console.WriteLine("Исключение: " + ex.InnerException);
+                }
+                Console.Read();
+
+                try
+                {
+                    Candy candy55 = new Candy("", 1000);
+
+                }
+                catch (WhatException ex)
+                {
+                    Console.WriteLine("Ошибка: " + ex.Message);
+                    Console.WriteLine("Метод: " + ex.TargetSite);
+                    Console.WriteLine("Источник: " + ex.Source);
+                    Console.WriteLine("Стек: " + ex.StackTrace);
+                    Console.WriteLine("Исключение: " + ex.InnerException);
+                }
+                 finally
+                {
+                    Console.WriteLine("--- ---");
+
+                }
+                Console.Read();
 
 
-                //ArgumentException
-                
+                try
+                {
+                    int[] array = new[] { 12, 12, 12 };
+                    int index = 100;
+                    if (array.Length < index) 
+                    {
+                        throw new ArgumentOutOfRangeException();
+                    }
+                    Console.WriteLine(array[index]);
+                }
+                catch (ArgumentOutOfRangeException ex) //обычное
+                {
+                    Console.WriteLine("Ошибка: " + ex.Message);
+                    Console.WriteLine("Метод: " + ex.TargetSite);
+                    Console.WriteLine("Источник: " + ex.Source);
+                    Console.WriteLine("Стек: " + ex.StackTrace);
+                    Console.WriteLine("Исключение: " + ex.InnerException);
+                }
+                finally
+                {
+                    Console.WriteLine("--- Убедитесь что вы написали правильный индекс! ---");
+
+                }
+                Console.Read();
+
+                try
+                {
+                    string str = null;
+                    if (str == null) 
+                    {
+                        throw new NullException("Было присвоено значение NULL ");
+                    }
+                    Console.WriteLine(str);
+                }
+                catch (NullException ex)
+                {
+                    Console.WriteLine("Ошибка: " + ex.Message);
+                    Console.WriteLine("Метод: " + ex.TargetSite);
+                    Console.WriteLine("Источник: " + ex.Source);
+                    Console.WriteLine("Стек: " + ex.StackTrace);
+                    Console.WriteLine("Исключение: " + ex.InnerException);
+                }
+                Console.Read();
+
+                try
+                {
+                    int x = 5, y =0;
+                    x = x / y;
+                }
+                catch (Exception ex) //обычное
+                {
+                    Console.WriteLine("Ошибка: " + ex.Message);
+                    Console.WriteLine("Метод: " + ex.TargetSite);
+                    Console.WriteLine("Источник: " + ex.Source);
+                    Console.WriteLine("Стек: " + ex.StackTrace);
+                    Console.WriteLine("Исключение: " + ex.InnerException);
+                }
+
+                finally
+                {
+                    Console.WriteLine("Попытка деления на ноль не удалась.");
+
+                }
+
                 Console.ReadKey();
             }
 

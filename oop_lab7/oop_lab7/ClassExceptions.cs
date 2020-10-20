@@ -6,12 +6,34 @@ using System.Threading.Tasks;
 
 namespace oop_lab7
 {
-    class WeightException : Exception
-    {
-        public WeightException() 
+    
+        class WeightException : Exception
         {
-            Console.WriteLine($"Вес товара не может быть равен 0!");
+            public WeightException(string message) : base(message)
+            {
+
+            }
+
         }
-        
-    }
+        public class WhatException : Exception
+        {
+
+            public WhatException(string message) : base(message)
+            {
+
+            }
+        }
+        class NullException : NullReferenceException// генерируется при попытке обращения к объекту, который равен null (то есть по сути неопределен)
+        {
+            public NullException(string message) : base(message)
+            {
+
+            }
+
+        }
+
+       
+
+       
+    
 }
