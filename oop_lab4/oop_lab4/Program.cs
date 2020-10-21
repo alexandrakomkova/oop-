@@ -194,10 +194,6 @@ namespace oop_lab4
 
 
     }
-
-
-
-
 }
 
 
