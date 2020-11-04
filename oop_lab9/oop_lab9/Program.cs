@@ -146,6 +146,7 @@ namespace oop_lab9
         private static void DisplayMessage(string message)
         {
             Console.WriteLine(message);
+
         }
         private static void f(string message)
         {

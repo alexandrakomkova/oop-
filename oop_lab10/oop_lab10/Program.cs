@@ -32,7 +32,6 @@ namespace oop_lab10
             this.size = size;
             this.type = type;
         }
-
         public void vectorToRastrum()
         {
             if (this.type == "vector")

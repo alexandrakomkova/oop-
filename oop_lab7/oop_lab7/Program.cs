@@ -368,7 +368,6 @@ namespace oop_lab5
                 try
                 {
                     Candy candy55 = new Candy("", 1000);
-
                 }
                 catch (WhatException ex)
                 {
