@@ -360,8 +360,8 @@ namespace oop_lab5
                     Console.WriteLine("Ошибка: " + ex.Message);
                     Console.WriteLine("Метод: " + ex.TargetSite);
                     Console.WriteLine("Источник: " + ex.Source);
-                    Console.WriteLine("Стек: " + ex.StackTrace);
-                    Console.WriteLine("Исключение: " + ex.InnerException);
+                    Console.WriteLine("Стек: " + ex.StackTrace); 
+                    
                 }
                 Console.Read();
 
@@ -376,7 +376,7 @@ namespace oop_lab5
                     Console.WriteLine("Метод: " + ex.TargetSite);
                     Console.WriteLine("Источник: " + ex.Source);
                     Console.WriteLine("Стек: " + ex.StackTrace);
-                    Console.WriteLine("Исключение: " + ex.InnerException);
+                    
                 }
                  finally
                 {
@@ -396,13 +396,13 @@ namespace oop_lab5
                     }
                     Console.WriteLine(array[index]);
                 }
-                catch (ArgumentOutOfRangeException ex) //обычное
+                catch (ArgumentOutOfRangeException ex) 
                 {
                     Console.WriteLine("Ошибка: " + ex.Message);
                     Console.WriteLine("Метод: " + ex.TargetSite);
                     Console.WriteLine("Источник: " + ex.Source);
                     Console.WriteLine("Стек: " + ex.StackTrace);
-                    Console.WriteLine("Исключение: " + ex.InnerException);
+                    
                 }
                 finally
                 {
@@ -426,7 +426,7 @@ namespace oop_lab5
                     Console.WriteLine("Метод: " + ex.TargetSite);
                     Console.WriteLine("Источник: " + ex.Source);
                     Console.WriteLine("Стек: " + ex.StackTrace);
-                    Console.WriteLine("Исключение: " + ex.InnerException);
+                   
                 }
                 Console.Read();
 
@@ -435,13 +435,13 @@ namespace oop_lab5
                     int x = 5, y =0;
                     x = x / y;
                 }
-                catch (Exception ex) //обычное
+                catch (Exception ex) 
                 {
                     Console.WriteLine("Ошибка: " + ex.Message);
                     Console.WriteLine("Метод: " + ex.TargetSite);
                     Console.WriteLine("Источник: " + ex.Source);
                     Console.WriteLine("Стек: " + ex.StackTrace);
-                    Console.WriteLine("Исключение: " + ex.InnerException);
+                    
                 }
 
                 finally
