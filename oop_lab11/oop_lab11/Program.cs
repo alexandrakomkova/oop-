@@ -93,7 +93,7 @@ namespace oop_lab11
 
         public override string ToString()
         {
-            return $"{id} - {label} - {model} - {year} - {color} - {price} - {regNum}\n";
+            return $" {label} - {model} - {year} - {color} - {price} - {regNum}\n";
         }
 
         public override bool Equals(object obj)
@@ -128,7 +128,7 @@ namespace oop_lab11
                                 select t; // выбираем объект
             foreach (string s in selectedN)
                 Console.WriteLine(s);
-            Console.WriteLine();
+            Console.WriteLine("\n");
 
             var selectedSummerOrWinter = from t in m // определяем каждый объект из teams как t
                             where t == "December" || t== "January" || t == "February" || t == "June" || t == "July" || t == "August"
@@ -136,31 +136,84 @@ namespace oop_lab11
                                          select t; // выбираем объект
             foreach (string s in selectedSummerOrWinter)
                 Console.WriteLine(s);
-            Console.WriteLine();
+            Console.WriteLine("\n");
 
             var selectedAlphabet = from t in m // определяем каждый объект из teams как t
                                          orderby t
                                          select t; // выбираем объект
             foreach (string s in selectedAlphabet)
                 Console.WriteLine(s);
-            Console.WriteLine();
+            Console.WriteLine("\n");
 
             var selectedUN = from t in m // определяем каждый объект из teams как t
                             where t.Length > 4 && t.Contains("u")    //фильтрация по критерию
                             select t; // выбираем объект
             foreach (string s in selectedUN)
                 Console.WriteLine(s);
-            Console.WriteLine();
+            Console.WriteLine("\n");
 
             car car1 = new car("audi", "v3", 2000, "green", 2300, 01294);
             car car2 = new car("opel", "v3", 2003, "black", 1000, 01234);
             car car3 = new car("volvo", "v56", 2005, "silver", 3400, 67329);
             car car4 = new car("bentley", "v1", 2010, "white", 4900, 60029);
             car car5 = new car("lexus", "v6", 2007, "red", 3790, 65748);
-            car car6 = new car("bugatti", "m2", 2017, "choco", 1790, 19748);
+            car car6 = new car("bugatti", "m2", 2017, "black", 1790, 19748);
             car car7 = new car("jeep", "v6", 2007, "red", 2000, 34548);
-            car car8 = new car("reno", "v98.0", 2013, "yellow", 3100, 60008);
-            List<car> listCars = new List<car> {car1, car2, car3, car4, car5, car6, car7, car8 };
+            car car8 = new car("volvo", "v98.0", 2013, "yellow", 3100, 60008);
+            car car9 = new car("reno", "v2", 2011, "black", 2200, 67222);
+            List<car> listCars = new List<car> {car1, car2, car3, car4, car5, car6, car7, car8, car9 };
+
+            var selectedCar = listCars.Where(t => t.label.Contains("o"));
+
+            foreach (var s in selectedCar)
+                Console.WriteLine(s);
+            Console.WriteLine("\n");
+
+            car[] arrayOfCars = new car[] { car1, car2, car3, car4, car5, car6, car7, car8, car9 };
+            var selectedCarLabel = listCars.Where(t => t.label == "volvo");
+
+            foreach (var s in selectedCarLabel)
+                Console.WriteLine(s);
+            Console.WriteLine("\n");
+
+            var selectedCarLabelN = listCars.Where(t => t.label == "volvo" && t.carAge() > 1);
+
+            foreach (var s in selectedCarLabelN)
+                Console.WriteLine(s);
+            Console.WriteLine("\n");
+
+            var selectedPriceColor = listCars.Where(t => t.color == "red" || t.color == "black" && t.price > 1000);
+
+            foreach (var s in selectedPriceColor)
+                Console.WriteLine(s);
+            Console.WriteLine("\n");
+
+            
+            int old = listCars.Max(a => a.car_age); //??????
+            var selectedOld = from t in listCars 
+                              where t.car_age == old
+                                         select t; 
+
+            foreach (var s in selectedOld)
+                Console.WriteLine(s);
+            Console.WriteLine("\n");
+
+            var selectedYoung = listCars.Take(5).OrderByDescending(t=> t.car_age);
+
+            foreach (var s in selectedYoung)
+                Console.WriteLine(s);
+            Console.WriteLine("\n");
+
+
+            var selectedPrice = listCars.OrderBy(t => t.price);
+
+            foreach (var s in selectedPrice)
+                Console.WriteLine(s);
+            Console.WriteLine("\n");
+
+            //условие select orderBy groupBy мин/макс
+
+
 
 
 
