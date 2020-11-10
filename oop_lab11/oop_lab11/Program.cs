@@ -159,7 +159,7 @@ namespace oop_lab11
             car car5 = new car("lexus", "v6", 2007, "red", 3790, 65748);
             car car6 = new car("bugatti", "m2", 2017, "black", 1790, 19748);
             car car7 = new car("jeep", "v6", 2007, "red", 2000, 34548);
-            car car8 = new car("volvo", "v98.0", 2013, "yellow", 3100, 60008);
+            car car8 = new car("volvo", "v98.0", 2013, "black", 3100, 60008);
             car car9 = new car("reno", "v2", 2011, "black", 2200, 67222);
             List<car> listCars = new List<car> {car1, car2, car3, car4, car5, car6, car7, car8, car9 };
 
@@ -213,9 +213,12 @@ namespace oop_lab11
 
             //условие select orderBy groupBy мин/макс
 
+            Console.WriteLine("----------------");
+            var selectedMY = listCars.Where(t => t.color.StartsWith("b")).Where(t => t.label.Equals("volvo")).Select(t => t.price);
 
-
-
+            foreach (var s in selectedMY)
+                Console.WriteLine(s);
+            Console.WriteLine("\n");
 
             Console.ReadKey();
 
