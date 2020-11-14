@@ -211,7 +211,7 @@ namespace oop_lab11
                 Console.WriteLine(s);
             Console.WriteLine("\n");
 
-            //условие select orderBy groupBy мин/макс
+            
 
             Console.WriteLine("----------------");
             var selectedMY = listCars.Where(t => t.color.StartsWith("b")).Where(t => t.label.Equals("volvo")).Select(t => t.price);
@@ -219,6 +219,20 @@ namespace oop_lab11
             foreach (var s in selectedMY)
                 Console.WriteLine(s);
             Console.WriteLine("\n");
+
+            string[] car = { car1.label, car2.label, car3.label, car4.label, car5.label, car6.label, car7.label, car8.label, car9.label };
+            int[] lengthOfLabel = { 4, 6, 5, 7 };
+            var sometype = car.Join(
+            lengthOfLabel, // внутренняя
+            w => w.Length, // внешний ключ выбора
+            q => q, // внутренний ключ выбора
+            (w, q) => new // результат
+{
+                lengthOfLabel = string.Format("{0} ", q),
+                car = w,
+            });
+            foreach (var item in sometype)
+                Console.WriteLine(item);
 
             Console.ReadKey();
 

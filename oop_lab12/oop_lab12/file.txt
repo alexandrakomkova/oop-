@@ -1,0 +1,46 @@
+имя сборки в которой определен класс: oop_lab12.car 
+список публичных методов 
+get_label
+set_label
+get_model
+set_model
+set_Year
+get_Year
+get_color
+set_color
+get_price
+set_price
+get_car_age
+set_car_age
+carAge
+about
+buy_car
+GetHashCode
+ToString
+Equals
+список интерфейсов 
+список полей 
+<label>k__BackingField
+<model>k__BackingField
+year
+<color>k__BackingField
+<price>k__BackingField
+regNum
+<car_age>k__BackingField
+id
+<carCounter>k__BackingField
+wheels
+список свойств 
+label
+model
+Year
+color
+price
+car_age
+методы с входным парметром String 
+set_label
+set_model
+set_color
+
+ not found - not found - 0 - not found - 0 - 0
+

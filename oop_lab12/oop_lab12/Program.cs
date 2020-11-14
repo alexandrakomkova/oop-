@@ -128,15 +128,22 @@ namespace oop_lab12
 
     public static class Reflector
     {
-        static bool counter = false;
+        
+        static bool counter = true;
         public static void nameAssembly(Type t)
         {
-            Console.WriteLine($"имя сборки в которой определен класс: {t.FullName} ");
+            
+            StreamWriter sw = new StreamWriter(@"D:\Саша Комкова\oop\oop_lab12\oop_lab12\file.txt", true);
+            // Console.WriteLine($"имя сборки в которой определен класс: {t.FullName} ");
+            sw.WriteLine( $"имя сборки в которой определен класс: {t.FullName} ");
+            sw.Close();
             return;
         }
 
         public static void nameMethods(Type t)
         {
+            StreamWriter sw = new StreamWriter(@"D:\Саша Комкова\oop\oop_lab12\oop_lab12\file.txt", true);
+            sw.WriteLine("список публичных методов ");
             MethodInfo[] methods = t.GetMethods(BindingFlags.DeclaredOnly
                 | BindingFlags.NonPublic
                 | BindingFlags.Public
@@ -144,59 +151,65 @@ namespace oop_lab12
                 );
             if (counter)
             {
-
-                Console.WriteLine("публичные методы класса: \n");
                 for (int i = 0; i < methods.Length; i++)
                 {
-                    // Console.Write(methods[i].Name + " \n");
-                    Console.WriteLine(methods[i].Name);
+                   sw.WriteLine(methods[i].Name);
                 }
             }
-
-            return;
+            sw.Close();
+            return ;
         }
         public static void nameField(Type t)
         {
+            StreamWriter sw = new StreamWriter(@"D:\Саша Комкова\oop\oop_lab12\oop_lab12\file.txt", true);
+            sw.WriteLine("список полей ");
             FieldInfo[] fi = t.GetFields(BindingFlags.Instance
                     | BindingFlags.Static
                     | BindingFlags.Public
                     | BindingFlags.NonPublic);
             if (fi.Length != 0)
             {
-                Console.WriteLine("поля класса:");
+                
                 for (int i = 0; i < fi.Length; i++)
                 {
-                    Console.WriteLine(fi[i].Name);
+                    sw.WriteLine(fi[i].Name);
                 }
             }
-
-            return;
+            sw.Close();
+            return ;
         }
         public static void nameProperties(Type t)
         {
+            StreamWriter sw = new StreamWriter(@"D:\Саша Комкова\oop\oop_lab12\oop_lab12\file.txt", true);
+            sw.WriteLine("список свойств ");
             PropertyInfo[] pi = t.GetProperties();
             if (pi.Length != 0)
             {
-                Console.WriteLine("свойства класса: ");
                 for (int i = 0; i < pi.Length; i++)
                 {
-                    Console.WriteLine(pi[i].Name);
+                    sw.WriteLine(pi[i].Name);
                 }
             }
+            sw.Close();
             return;
         }
         public static void nameInterface(Type t)
         {
+            StreamWriter sw = new StreamWriter(@"D:\Саша Комкова\oop\oop_lab12\oop_lab12\file.txt", true);
+            sw.WriteLine("список интерфейсов ");
+            
             foreach (Type i in t.GetInterfaces())
             {
-                Console.WriteLine(i.Name);
+                sw.WriteLine(i.Name);
             }
-            return;
+            sw.Close();
+            return ;
         }
 
-        public static void mathodParam(Type t)
+        public static void methodParam(Type t)
         {
-            Console.WriteLine("методы с входным парметром String ");
+            StreamWriter sw = new StreamWriter(@"D:\Саша Комкова\oop\oop_lab12\oop_lab12\file.txt", true);
+            sw.WriteLine("методы с входным парметром String ");
             MethodInfo[] methods = t.GetMethods(BindingFlags.DeclaredOnly
                 | BindingFlags.NonPublic
                 | BindingFlags.Public
@@ -209,28 +222,33 @@ namespace oop_lab12
                 {
                     if (parameter.ParameterType.Name == "String")
                     {
-                        Console.WriteLine(methods[i].Name);
+                        sw.WriteLine(methods[i].Name);
                     }
 
 
                 }
             }
-            return;
+            sw.Close();
+            return ;
         }
         public static void invk(Type t, car elem)
         {
+            StreamWriter sw = new StreamWriter(@"D:\Саша Комкова\oop\oop_lab12\oop_lab12\file.txt", true);
             var obj = elem;
             MethodInfo inf = t.GetMethod("buy_car");
             object[] fd = { 100 };
             var r = inf.Invoke(obj, fd);
-            Console.WriteLine(r);
+            sw.WriteLine(r);
+            sw.Close();
             return;
         }
         public static void create(Type t)
         {
+            StreamWriter sw = new StreamWriter(@"D:\Саша Комкова\oop\oop_lab12\oop_lab12\file.txt", true);
             var instance = Activator.CreateInstance(t);
-            Console.WriteLine(instance);
-            
+            sw.WriteLine(instance);
+            sw.Close();
+            return;
         }
 
     }
@@ -241,187 +259,46 @@ namespace oop_lab12
         {
             car car6 = new car("bugatti", "m2", 2017, "black", 1790, 19748);
             Type t = Type.GetType("oop_lab12.car", false, true);
-            bool flag = false;
-
-            string writePath = @"D:\Саша Комкова\oop\oop_lab12\oop_lab12\file.txt";
-            string pathRead1 = @"D:\Саша Комкова\oop\oop_lab12\oop_lab12\invoke_1.txt";
-            string pathRead2 = @"D:\Саша Комкова\oop\oop_lab12\oop_lab12\invoke_2.txt";
+            
 
             try
             {
-                Reflector.nameAssembly(Type.GetType("oop_lab12.car", false, true));
-                Reflector.nameMethods(Type.GetType("oop_lab12.car", false, true));
-                Reflector.nameInterface(Type.GetType("oop_lab12.car", false, true));
-                Reflector.nameField(Type.GetType("oop_lab12.car", false, true));
-                Reflector.nameProperties(Type.GetType("oop_lab12.car", false, true));
-                Reflector.mathodParam(Type.GetType("oop_lab12.car", false, true));
-                Reflector.invk(Type.GetType("oop_lab12.car", false, true), car6);
-                Reflector.create(Type.GetType("oop_lab12.car", false, true));
-
+                    Reflector.nameAssembly(t);
+                    Reflector.nameMethods(t);
+                    Reflector.nameInterface(t);
+                    Reflector.nameField(t);
+                    Reflector.nameProperties(t);
+                    Reflector.methodParam(t);
+                    Reflector.invk(t, car6);
+                    Reflector.create(t);
+                
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
 
-    //try
-    //{
-    //    MethodInfo[] methods = t.GetMethods(BindingFlags.DeclaredOnly
-    //    | BindingFlags.NonPublic
-    //    | BindingFlags.Public
-    //    | BindingFlags.Instance
-    //    );
-    //    if (methods.Length != 0)
-    //    {
-    //        //Console.WriteLine("у класса есть публичные методы!!\n");
-    //        flag = true;
 
-    //    }
 
-    //    FieldInfo[] fi = t.GetFields(BindingFlags.Instance
-    //        | BindingFlags.Static
-    //        | BindingFlags.Public
-    //        | BindingFlags.NonPublic);
-    //    PropertyInfo[] pi = t.GetProperties();
+            //string pathRead1 = @"D:\Саша Комкова\oop\oop_lab12\oop_lab12\invoke_1.txt";
+            //string pathRead2 = @"D:\Саша Комкова\oop\oop_lab12\oop_lab12\invoke_2.txt";
+            //    var q = sr.ReadToEnd();
+            //    using (StreamReader sr2 = new StreamReader(pathRead2))
+            //    {
+            //        string w = sr2.ReadToEnd();
 
-    //    Console.WriteLine("--------------------");
-    //    //Assembly assembly = Assembly.LoadFrom(@"E:\ConsoleApp40.exe");
-    //    //Type type = assembly.GetType("ConsoleApp40.MyClass");
+            //        object[] v = (object[])Convert.ChangeType(w, typeof(object[]));
+
+            //        MethodInfo m = t.GetMethod("buy_car");
+
+            //        var out_str = m.Invoke(q, v);
+            //        Console.WriteLine(out_str);
+            //    }
+            //}
 
 
 
-
-
-
-
-    //    Console.WriteLine("--------------------");
-    //    using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
-    //    {
-    //        sw.WriteLine($"имя сборки в которой определен класс: {t.FullName} ");
-    //        if (flag)
-    //        {
-
-    //            sw.WriteLine("публичные методы класса: \n");
-    //            for (int i = 0; i < methods.Length; i++)
-    //            {
-    //                // Console.Write(methods[i].Name + " \n");
-    //                sw.WriteLine(methods[i].Name );
-    //            }
-    //        }
-    //        if (fi.Length != 0)
-    //        {
-    //            sw.WriteLine("поля класса:" );
-    //            for (int i = 0; i < fi.Length; i++)
-    //            {
-    //                sw.WriteLine(fi[i].Name );
-    //            }
-    //        }
-    //        if (pi.Length != 0)
-    //        {
-    //            sw.WriteLine("свойства класса: ");
-    //            for (int i = 0; i < pi.Length; i++)
-    //            {
-    //                sw.WriteLine(pi[i].Name);
-    //            }
-    //        }
-    //        foreach (Type i in t.GetInterfaces())
-    //        {
-    //            sw.WriteLine(i.Name);
-    //        }
-    //        sw.WriteLine("методы с входным парметром String ");
-    //        for (int i = 0; i < methods.Length; i++)
-    //        {
-    //            ParameterInfo[] parameters = methods[i].GetParameters();
-    //            foreach (ParameterInfo parameter in parameters)
-    //            {
-    //                if (parameter.ParameterType.Name == "String")
-    //                {
-    //                    sw.WriteLine(methods[i].Name );
-    //                }
-
-
-    //            }
-    //        }
-
-    //        var obj = car6;
-    //        MethodInfo inf = t.GetMethod("buy_car");
-    //        object[] fd = { 100 };
-    //        var r = inf.Invoke(obj, fd);
-    //        sw.WriteLine(r);
-
-    //        //using (StreamReader sr = new StreamReader(pathRead1))
-    //        //{
-    //        //    var q = sr.ReadToEnd();
-    //        //    using (StreamReader sr2 = new StreamReader(pathRead2))
-    //        //    {
-    //        //        string w = sr2.ReadToEnd();
-
-    //        //        object[] v = (object[])Convert.ChangeType(w, typeof(object[]));
-
-    //        //        MethodInfo m = t.GetMethod("buy_car");
-
-    //        //        var out_str = m.Invoke(q, v);
-    //        //        Console.WriteLine(out_str);
-    //        //    }
-    //        //}
-
-    //        //var q = car6;
-    //        //MethodInfo info = t.GetMethod("buy_car");
-    //        //object[] f = { 100 };
-    //        //var res = info.Invoke(q, f);
-    //        //Console.WriteLine(res);
-    //    }
-
-    //    Console.WriteLine("Запись выполнена");
-    //}
-    //catch (Exception e)
-    //{
-    //    Console.WriteLine(e.Message);
-    //}
-
-
-    //Console.WriteLine($"имя сборки в которой определен класс: {t.FullName} ");
-
-    //MethodInfo[] methods = t.GetMethods(BindingFlags.DeclaredOnly
-    //    | BindingFlags.NonPublic
-    //    | BindingFlags.Public
-    //    | BindingFlags.Instance
-    //    );
-    //if (methods.Length != 0)
-    //{
-    //    Console.WriteLine("у класса есть публичные методы!!\n");
-    //    flag = true;
-    //}
-    //if (flag)
-    //{
-    //    Console.WriteLine("публичные методы класса: ");
-    //    for (int i = 0; i < methods.Length; i++)
-    //    {
-    //        Console.Write(methods[i].Name + " \n");
-    //    }
-    //}
-    //if (fi.Length != 0)
-    //{
-
-    //    Console.WriteLine("поля класса: ");
-    //    for (int i = 0; i < fi.Length; i++)
-    //    {
-    //        Console.Write(fi[i].Name + " \n");
-    //    }
-    //}
-    //if (pi.Length != 0)
-    //{
-
-    //    Console.WriteLine("свойства класса: ");
-    //    for (int i = 0; i < pi.Length; i++)
-    //    {
-    //        Console.Write(pi[i].Name + " \n");
-    //    }
-    //}
-
-
-
-    Console.ReadKey();
+            Console.ReadKey();
         }
     }
 }
