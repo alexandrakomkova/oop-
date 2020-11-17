@@ -65,7 +65,7 @@ namespace oop_lab13
     {
         public static void DirInfoWrite()
         {
-            StreamWriter sw = new StreamWriter(@"D:\Саша Комкова\oop\oop_lab13\kavlog.txt", true);
+           // StreamWriter sw = new StreamWriter(@"D:\Саша Комкова\oop\oop_lab13\kavlog.txt", true);
             string dirName = @"D:\Саша Комкова\oop";
             if (Directory.Exists(dirName))
             {
@@ -94,14 +94,76 @@ namespace oop_lab13
 
     }
 
+    public static class KAVFileManager
+    {
+        public static void FileManager()
+        {
+           // StreamWriter sw = new StreamWriter(@"D:\Саша Комкова\oop\oop_lab13\kavlog.txt", true);
+            string dirName = @"D:\Саша Комкова\oop\oop_lab13";
+            string KAVInspect = @"D:\Саша Комкова\oop\oop_lab13\KAVInspect";
+            string KAVFiles = @"D:\Саша Комкова\oop\oop_lab13\KAVFiles";
+            if (Directory.Exists(dirName))
+            {
+                Console.WriteLine("подкаталоги:");
+                string[] dirs = Directory.GetDirectories(dirName);
+                foreach (string s in dirs)
+                {
+                    Console.WriteLine(s);
+                }
+                Console.WriteLine();
+                Console.WriteLine("файлы:");
+                string[] files = Directory.GetFiles(dirName);
+                foreach (string s in files)
+                {
+                    Console.WriteLine(s);
+                }
+                DirectoryInfo dirNew = new DirectoryInfo(KAVInspect);
+                string KAVdirinfo = @"D:\Саша Комкова\oop\oop_lab13\KAVInspect\KAVdirinfo.txt";
+                string KAVdirinfo_new = @"D:\KAVdirinfo.txt";
+                FileInfo fileInf = new FileInfo(KAVdirinfo);
+                
+                if (!dirNew.Exists)
+                {
+                    
+                    dirNew.Create();
+                    Console.WriteLine("директория создана");
+                    fileInf.Create();
+                    Console.WriteLine("файл создана");
+                }
+                if (fileInf.Exists)
+                {
+                    File.Copy(KAVdirinfo, KAVdirinfo_new, true);
+                    fileInf.Delete();
+                    dirNew.Delete();
+                }
+            }
+            string KAVcopy_from = @"C:\Users\Саша Комкова\Desktop\UNI\оси\*txt";
+            
+            DirectoryInfo dirFiles = new DirectoryInfo(KAVFiles);
+            if (!dirFiles.Exists)
+            {
+
+                dirFiles.Create();
+                Console.WriteLine("директория создана");
+                File.Copy(KAVcopy_from, KAVFiles, true);
+                Console.WriteLine("файлы скопированы");
+            }
+            if (dirFiles.Exists && Directory.Exists(KAVInspect) == false)
+            {
+                dirFiles.MoveTo(KAVInspect);
+            }
+        }
+        
+
+    }
     class Program
     {
         static void Main(string[] args)
         {
-            KAVDriveInfo.DriveInfoWrite();
-            KAVFileInfo.FileInfoWrite();
-            KAVDirInfo.DirInfoWrite();
-
+           // KAVDriveInfo.DriveInfoWrite();
+           // KAVFileInfo.FileInfoWrite();
+           // KAVDirInfo.DirInfoWrite();
+            KAVFileManager.FileManager();
 
 
             Console.ReadKey();
