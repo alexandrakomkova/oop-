@@ -63,11 +63,22 @@ namespace oop_lab15
             //t1.Start(n);
 
 
-            Thread t3 = new Thread(new ParameterizedThreadStart(countFirstSync));
-            Thread t4 = new Thread(new ParameterizedThreadStart(countSecondSync));
-            t3.Start(n);
-            t4.Start(n);
+            //Thread t3 = new Thread(new ParameterizedThreadStart(countFirstSync));
+            //Thread t4 = new Thread(new ParameterizedThreadStart(countSecondSync));
+            //t3.Start(n);
+            //t4.Start(n);
 
+            //Thread t5 = new Thread(new ParameterizedThreadStart(countFirstOneByOne));
+            //Thread t6 = new Thread(new ParameterizedThreadStart(countSecondOneByOne));
+            //t5.Start(n);
+            //t6.Start(n);
+
+
+           
+            // устанавливаем метод обратного вызова
+            TimerCallback tm = new TimerCallback(hello);
+            // создаем таймер
+            Timer timer = new Timer(tm, null,0, 2000);
 
             Console.ReadKey();
         }
@@ -77,7 +88,12 @@ namespace oop_lab15
             Assembly assembly = Assembly.LoadFile(path);
             Console.WriteLine($"loaded assemly: {assembly.GetName().Name}\n");
         }
-
+        public static void hello(object n) 
+        {
+            
+                Console.WriteLine(" - hello - ");
+            
+        }
         public static void Count(object n)
         {
             StreamWriter sw = new StreamWriter(@"D:\Саша Комкова\oop\oop_lab15\file.txt", true);
@@ -108,7 +124,6 @@ namespace oop_lab15
         }
         public static void countSecond(object n)
         {
-            //Thread.Sleep(10000);
             StreamWriter sw = new StreamWriter(@"D:\Саша Комкова\oop\oop_lab15\file.txt", true);
             int counter = (int)n;
             for (int i = 1; i <= counter; i++)
@@ -143,7 +158,7 @@ namespace oop_lab15
         }
         public static void countSecondSync(object n)
         {
-            //Thread.Sleep(10000);
+            
             lock (locker)
             {
                 StreamWriter sw = new StreamWriter(@"D:\Саша Комкова\oop\oop_lab15\file.txt", true);
@@ -159,6 +174,35 @@ namespace oop_lab15
                 }
                 sw.Close();
             }
+        }
+
+        public static void countFirstOneByOne(object n)
+        {
+            int counter = (int)n;
+            for (int i = 1; i <= counter; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    Console.WriteLine(i);
+                    Thread.Sleep(300);
+                }
+            }
+            
+        }
+        public static void countSecondOneByOne(object n)
+        {
+             
+            int counter = (int)n;
+            for (int i = 1; i <= counter; i++)
+            {
+                if (i % 2 == 1)
+                {
+                    Console.WriteLine(i);
+                    Thread.Sleep(300);
+                }
+            }
+            
+            
         }
     }
 }
