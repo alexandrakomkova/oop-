@@ -93,132 +93,133 @@ namespace oop_lab14
             Goods good = new Goods("candy", "choco");
             Goods good2 = new Goods("chocolate", "dark");
             Goods good3 = new Goods("car", "red");
-            //BinaryFormatter bin = new BinaryFormatter();
-            //// получаем поток, куда будем записывать сериализованный объект
-            //using (FileStream fs = new FileStream("flowers.dat", FileMode.OpenOrCreate))
-            //{
-            //    bin.Serialize(fs, flower1);
-            //    Console.WriteLine("flower1 сериализован");
-            //}
 
-            //// десериализация из файла flowers.dat
-            //using (FileStream fs = new FileStream("flowers.dat", FileMode.OpenOrCreate))
-            //{
-            //    Flowers flower1_d = (Flowers)bin.Deserialize(fs);
+            BinaryFormatter bin = new BinaryFormatter();
+            // получаем поток, куда будем записывать сериализованный объект
+            using (FileStream fs = new FileStream("flowers.dat", FileMode.OpenOrCreate))
+            {
+                bin.Serialize(fs, flower1);
+                Console.WriteLine("flower1 сериализован");
+            }
 
-            //    Console.WriteLine("flower1 десериализован");
-            //    Console.WriteLine($"name: {flower1_d.name} - color: {flower1_d.color}"); //колор не выводится потому что запретили сериализацию
-            //}
+            // десериализация из файла flowers.dat
+            using (FileStream fs = new FileStream("flowers.dat", FileMode.OpenOrCreate))
+            {
+                Flowers flower1_d = (Flowers)bin.Deserialize(fs);
 
-            //SoapFormatter soap = new SoapFormatter();
-            //using (FileStream fs = new FileStream("flower_soap.soap", FileMode.OpenOrCreate))
-            //{
-            //    soap.Serialize(fs, flower2);
-            //    Console.WriteLine("flower2 сериализован");
-            //}
+                Console.WriteLine("flower1 десериализован");
+                Console.WriteLine($"name: {flower1_d.name} - color: {flower1_d.color}"); //колор не выводится потому что запретили сериализацию
+            }
 
-            //// десериализация из файла flower_soap.soap
-            //using (FileStream fs = new FileStream("flower_soap.soap", FileMode.OpenOrCreate))
-            //{
-            //    Flowers flower2_d = (Flowers)soap.Deserialize(fs);
+            SoapFormatter soap = new SoapFormatter();
+            using (FileStream fs = new FileStream("flower_soap.soap", FileMode.OpenOrCreate))
+            {
+                soap.Serialize(fs, flower2);
+                Console.WriteLine("flower2 сериализован");
+            }
 
-            //    Console.WriteLine("flower2 десериализован");
-            //    Console.WriteLine($"name: {flower2_d.name} - color: {flower2_d.color}"); //колор не выводится потому что запретили сериализацию
-            //}
+            // десериализация из файла flower_soap.soap
+            using (FileStream fs = new FileStream("flower_soap.soap", FileMode.OpenOrCreate))
+            {
+                Flowers flower2_d = (Flowers)soap.Deserialize(fs);
 
-
-            //JsonSerializer serializer = new JsonSerializer();
-
-            //using (StreamWriter sw = new StreamWriter(Path.Combine(@"D:\Саша Комкова", "flowers.json")))
-            //using (JsonWriter writer = new JsonTextWriter(sw))
-            //{
-            //    serializer.Serialize(writer, flower3);
-            //    Console.WriteLine("flower3 сериализован");
-            //}
-
-            //using (StreamReader sr = new StreamReader(Path.Combine(@"D:\Саша Комкова", "flowers.json")))
-            //using (JsonReader reader = new JsonTextReader(sr))
-            //{
-            //    serializer.Deserialize(reader);
-            //    Console.WriteLine("flower3 десериализован");
-            //}
-            //string output = JsonConvert.SerializeObject(flower3);
-            //Console.WriteLine(output);
+                Console.WriteLine("flower2 десериализован");
+                Console.WriteLine($"name: {flower2_d.name} - color: {flower2_d.color}"); //колор не выводится потому что запретили сериализацию
+            }
 
 
-            //XML
-            //string pathXML = Path.Combine(@"D:\Саша Комкова", "flowers.xml");
-            //XmlSerializer xml = new XmlSerializer(typeof(Goods));
+            JsonSerializer serializer = new JsonSerializer();
 
-            //try
-            //{
-            //    using (FileStream we = new FileStream(pathXML, FileMode.OpenOrCreate))
-            //    {
-            //        xml.Serialize(we, good);
-            //    }
-            //}
-            //catch (Exception error)
-            //{
-            //    Console.WriteLine(error);
-            //}
+            using (StreamWriter sw = new StreamWriter(Path.Combine(@"D:\Саша Комкова", "flowers.json")))
+            using (JsonWriter writer = new JsonTextWriter(sw))
+            {
+                serializer.Serialize(writer, flower3);
+                Console.WriteLine("flower3 сериализован");
+            }
 
-
-            //using (FileStream fs = new FileStream(pathXML, FileMode.OpenOrCreate))
-            //{
-            //    xml.Serialize(fs, good);
-            //    Console.WriteLine("goods сериализован");
-            //}
-
-            //// десериализация
-            //using (FileStream fs = new FileStream(pathXML, FileMode.OpenOrCreate))
-            //{
-            //    Goods good_d = (Goods)xml.Deserialize(fs);
-
-            //    Console.WriteLine("goods десериализован");
-            //    Console.WriteLine(good_d.name);
-
-            //}
+            using (StreamReader sr = new StreamReader(Path.Combine(@"D:\Саша Комкова", "flowers.json")))
+            using (JsonReader reader = new JsonTextReader(sr))
+            {
+                serializer.Deserialize(reader);
+                Console.WriteLine("flower3 десериализован");
+            }
+            string output = JsonConvert.SerializeObject(flower3);
+            Console.WriteLine(output);
 
 
+           
+            string pathXML = Path.Combine(@"D:\Саша Комкова", "flowers.xml");
+            XmlSerializer xml = new XmlSerializer(typeof(Goods));
 
-            //BinaryFormatter bin_m = new BinaryFormatter();
+            try
+            {
+                using (FileStream fs = new FileStream(pathXML, FileMode.OpenOrCreate))
+                {
+                    xml.Serialize(fs, good);
+                }
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine(error);
+            }
 
-            //using (FileStream fs = new FileStream("flowers.dat", FileMode.OpenOrCreate))
-            //{
-            //    // сериализуем весь массив flower_shop
-            //    bin_m.Serialize(fs, flower_shop);
 
-            //    Console.WriteLine("Объект сериализован");
-            //}
+            using (FileStream fs = new FileStream(pathXML, FileMode.OpenOrCreate))
+            {
+                xml.Serialize(fs, good);
+                Console.WriteLine("goods сериализован");
+            }
 
-            //// десериализация
-            //using (FileStream fs = new FileStream("flowers.dat", FileMode.OpenOrCreate))
-            //{
-            //    Flowers[] deserilizePeople = (Flowers[])bin_m.Deserialize(fs);
+            // десериализация
+            using (FileStream fs = new FileStream(pathXML, FileMode.OpenOrCreate))
+            {
+                Goods good_d = (Goods)xml.Deserialize(fs);
 
-            //    foreach (Flowers f in deserilizePeople)
-            //    {
-            //        Console.WriteLine($"name: {f.name} - color: {f.color}");
-            //    }
-            //}
+                Console.WriteLine("goods десериализован");
+                Console.WriteLine(good_d.name);
+
+            }
 
 
 
+            BinaryFormatter bin_m = new BinaryFormatter();
 
-            //XmlDocument xDoc = new XmlDocument();
-            //xDoc.Load(@"D:\Саша Комкова\flowers.xml");
-            //XmlElement xRoot = xDoc.DocumentElement;
+            using (FileStream fs = new FileStream("flowers.dat", FileMode.OpenOrCreate))
+            {
+                // сериализуем весь массив flower_shop
+                bin_m.Serialize(fs, flower_shop);
 
-            //// выбор всех дочерних узлов
-            //XmlNodeList childnodes = xRoot.SelectNodes("*");
-            //foreach (XmlNode n in childnodes)
-            //{ 
-            //    Console.WriteLine(n.OuterXml); 
-            //}
+                Console.WriteLine("flower_shop сериализован");
+            }
 
-            //XmlNodeList childnodes_2 = xRoot.SelectNodes("//good/name");
-            //foreach (XmlNode n in childnodes_2)
-            //    Console.WriteLine(n.InnerText);
+            // десериализация
+            using (FileStream fs = new FileStream("flowers.dat", FileMode.OpenOrCreate))
+            {
+                Flowers[] deserilizePeople = (Flowers[])bin_m.Deserialize(fs);
+
+                foreach (Flowers f in deserilizePeople)
+                {
+                    Console.WriteLine($"name: {f.name} - color: {f.color}");
+                }
+            }
+
+
+
+
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(@"D:\Саша Комкова\flowers.xml");
+            XmlElement xRoot = xDoc.DocumentElement;
+
+            // выбор всех дочерних узлов
+            XmlNodeList childnodes = xRoot.SelectNodes("*");
+            foreach (XmlNode n in childnodes)
+            {
+                Console.WriteLine(n.OuterXml);
+            }
+
+            XmlNodeList childnodes_2 = xRoot.SelectNodes("//good/name");
+            foreach (XmlNode n in childnodes_2)
+                Console.WriteLine(n.InnerText);
 
             XDocument xdoc = XDocument.Load(@"D:\Саша Комкова\flowersLINQ.xml");
             foreach (XElement flowerElement in xdoc.Element("flowers").Elements("flower"))
