@@ -19,66 +19,61 @@ namespace oop_lab15
         static void Main(string[] args)
         {
 
-            //foreach (Process process in Process.GetProcesses())
-            //{
-            //    Console.WriteLine($"id: {process.Id}");
-            //    Console.WriteLine($"name: {process.ProcessName}");
-            //    Console.WriteLine($"priority: {process.BasePriority}");
-            //    // Console.WriteLine($"start time: {process.StartTime}");
-            //    //Console.WriteLine($"processor time: {process.TotalProcessorTime}");
-            //    Console.WriteLine("-------------------------------------");
+            foreach (Process process in Process.GetProcesses())
+            {
+                Console.WriteLine($"id: {process.Id}");
+                Console.WriteLine($"name: {process.ProcessName}");
+                Console.WriteLine($"priority: {process.BasePriority}");
+                Console.WriteLine("-------------------------------------");
 
-            //}
+            }
 
 
-            //AppDomain domain = AppDomain.CurrentDomain;
-            //Console.WriteLine($"name: {domain.FriendlyName}");
-            //Console.WriteLine($"info: {domain.SetupInformation}\n");
-            //Assembly[] assemblies = domain.GetAssemblies();
-            //foreach (Assembly asm in assemblies)
-            //    Console.WriteLine(asm.GetName().Name);
+            AppDomain domain = AppDomain.CurrentDomain;
+            Console.WriteLine($"name: {domain.FriendlyName}");
+            Console.WriteLine($"info: {domain.SetupInformation}\n");
+            Assembly[] assemblies = domain.GetAssemblies();
+            foreach (Assembly asm in assemblies)
+                Console.WriteLine(asm.GetName().Name);
 
-            //// Создадим новый домен приложения
-            //AppDomain newD = AppDomain.CreateDomain("newDomain");
-            //loadAssembly(newD);
-            //// Уничтожение домена приложения
-            //AppDomain.Unload(newD);
+           
+            AppDomain newD = AppDomain.CreateDomain("newDomain");
+            loadAssembly(newD);
+            AppDomain.Unload(newD);
 
-            // создаем новый поток
+           
 
             Console.Write("enter number: ");
             int n = int.Parse(Console.ReadLine());
-            //Thread thread = new Thread(new ParameterizedThreadStart(Count));
-            //thread.Start(n);
-            //Console.WriteLine($"state: {thread.ThreadState}");
-            //Console.WriteLine($"name: {thread.Name}");
-            //Console.WriteLine($"priority: {thread.Priority}");
-            //Console.WriteLine($"id: {thread.ManagedThreadId}");
+            Thread thread = new Thread(new ParameterizedThreadStart(Count));
+            thread.Start(n);
+            Console.WriteLine($"state: {thread.ThreadState}");
+            Console.WriteLine($"name: {thread.Name}");
+            Console.WriteLine($"priority: {thread.Priority}");
+            Console.WriteLine($"id: {thread.ManagedThreadId}");
 
 
-            //Thread t1 = new Thread(new ParameterizedThreadStart(countFirst));
-            //Thread t2 = new Thread(new ParameterizedThreadStart(countSecond));
-            //t2.Priority = ThreadPriority.Highest;
-            //t2.Start(n);
-            //t1.Start(n);
+            Thread t1 = new Thread(new ParameterizedThreadStart(countFirst));
+            Thread t2 = new Thread(new ParameterizedThreadStart(countSecond));
+            t2.Priority = ThreadPriority.Highest;
+            t2.Start(n);
+            t1.Start(n);
 
 
-            //Thread t3 = new Thread(new ParameterizedThreadStart(countFirstSync));
-            //Thread t4 = new Thread(new ParameterizedThreadStart(countSecondSync));
-            //t3.Start(n);
-            //t4.Start(n);
+            Thread t3 = new Thread(new ParameterizedThreadStart(countFirstSync));
+            Thread t4 = new Thread(new ParameterizedThreadStart(countSecondSync));
+            t3.Start(n);
+            t4.Start(n);
 
-            //Thread t5 = new Thread(new ParameterizedThreadStart(countFirstOneByOne));
-            //Thread t6 = new Thread(new ParameterizedThreadStart(countSecondOneByOne));
-            //t5.Start(n);
-            //t6.Start(n);
+            Thread t5 = new Thread(new ParameterizedThreadStart(countFirstOneByOne));
+            Thread t6 = new Thread(new ParameterizedThreadStart(countSecondOneByOne));
+            t5.Start(n);
+            t6.Start(n);
 
 
-           
-            // устанавливаем метод обратного вызова
+
             TimerCallback tm = new TimerCallback(hello);
-            // создаем таймер
-            Timer timer = new Timer(tm, null,0, 2000);
+            Timer timer = new Timer(tm, null, 0, 2000);
 
             Console.ReadKey();
         }
@@ -206,3 +201,5 @@ namespace oop_lab15
         }
     }
 }
+//Console.WriteLine($"start time: {process.StartTime}");
+//Console.WriteLine($"processor time: {process.TotalProcessorTime}");
